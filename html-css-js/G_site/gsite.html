@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decommissioning Timeline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            padding: 40px 20px;
+        }
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #0b5394;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #5f6368;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #34a853 0%, #fbbc04 50%, #ea4335 100%);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .timeline-content {
+            width: 45%;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #0b5394;
+            transition: all 0.3s ease;
+        }
+        .timeline-item:nth-child(even) .timeline-content {
+            border-left: none;
+            border-right: 4px solid #0b5394;
+        }
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .timeline-date {
+            font-weight: bold;
+            color: #0b5394;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-weight: 600;
+            color: #202124;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .timeline-description {
+            color: #5f6368;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .timeline-marker {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 4px solid #0b5394;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover .timeline-marker {
+            transform: translateX(-50%) scale(1.3);
+            border-color: #0b5394;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .status-completed {
+            background: #e6f4ea;
+            color: #137333;
+        }
+        .status-current {
+            background: #fef7e0;
+            color: #b06000;
+        }
+        .status-upcoming {
+            background: #fce8e6;
+            color: #c5221f;
+        }
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: row !important;
+            }
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 40px;
+            }
+            .timeline-marker {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="timeline-container">
+        <h1>Decommissioning AA & CC</h1>
+        <p class="subtitle">Viewers - End of Life</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Week 48 (Nov 2025)</div>
+                    <div class="timeline-title">Decommissioning started</div>
+                    <div class="timeline-description">
+                        MyC is now available. AA & CC decommissioning process has been initiated.
+                    </div>
+                    <span class="status-badge status-upcoming">Starting</span>
+                </div>
+                <div class="timeline-marker"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Weeks 48-50</div>
+                    <div class="timeline-title">Transition period</div>
+                    <div class="timeline-description">
+                        Last weeks before shutdown. will stop working at the end of this period.
+                    </div>
+                    <span class="status-badge status-current">Final weeks</span>
+                </div>
+                <div class="timeline-marker"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Week 50/51 (Dec 2025)</div>
+                    <div class="timeline-title">shutdown</div>
+                    <div class="timeline-description">
+                       are permanently shut down and no longer accessible.
+                    </div>
+                    <span class="status-badge status-upcoming">Deadline</span>
+                </div>
+                <div class="timeline-marker"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

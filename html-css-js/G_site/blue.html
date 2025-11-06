@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Décommissionning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            padding: 20px;
+            color: #202124;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            padding: 30px;
+            background: #00205b;
+        }
+        h2 {
+            color: #ffffff;
+            margin-bottom: 24px;
+            font-size: 24px;
+            text-align: center;
+        }
+        .faq-item {
+            margin-bottom: 12px;
+            border: 1px solid #e8eaed;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+        .faq-item input[type="checkbox"] {
+            display: none;
+        }
+        .faq-question {
+            display: block;
+            padding: 20px;
+            background: #f8f9fa;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #202124;
+            position: relative;
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+        .faq-question:hover {
+            background: #e8f0fe;
+        }
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 28px;
+            color: #0b5394;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        .faq-item input[type="checkbox"]:checked + .faq-question::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 20px;
+            background: white;
+        }
+        .faq-item input[type="checkbox"]:checked ~ .faq-answer {
+            max-height: 800px;
+            padding: 20px;
+        }
+        .faq-answer p {
+            line-height: 1.6;
+            color: #5f6368;
+            margin-bottom: 12px;
+        }
+        .faq-answer a {
+            color: #0b5394;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
+        .contact-info {
+            background: #e8f0fe;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        .contact-info p {
+            margin: 4px 0;
+            color: #202124;
+        }
+        .alert-box {
+            background: #fce8e6;
+            border-left: 4px solid #ea4335;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        .alert-box p {
+            color: #c5221f;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-container">
+        <h2> FAQ</h2>
+        <div class="faq-item">
+            <input type="checkbox" id="faq1">
+            <label for="faq1" class="faq-question">
+                Why are these viewers being decommissioned?
+            </label>
+            <div class="faq-answer">
+                <p>Migration to a modern AI-powered application offering better performance and enhanced features.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <input type="checkbox" id="faq2">
+            <label for="faq2" class="faq-question">
+                When exactly will the viewers stop working?
+            </label>
+            <div class="faq-answer">
+                <p>The exact shutdown date is not yet finalized, but will occur in early December 2025.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <input type="checkbox" id="faq3">
+            <label for="faq3" class="faq-question">
+                What should I do if I need help during the transition?
+            </label>
+            <div class="faq-answer">
+                <p>Please contact :</p>
+                <div class="contact-info">
+                    <p><strong>aa.bb@ggg.com</strong> </p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <input type="checkbox" id="faq4">
+            <label for="faq4" class="faq-question">
+                Where can I find the documentation for the new tool?
+            </label>
+            <div class="faq-answer">
+                <p>For information concerning MyC:</p>
+                <div class="contact-info">
+                    <p><strong><a href="https://sites.google.com" target="_blank">Documentation</a></strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

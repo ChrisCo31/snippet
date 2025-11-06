@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application X</title>
+    <style>
+       /* Styles du Popup */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.popup-content h2 {
+    color: #d32f2f;
+    margin-bottom: 15px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #1976d2;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 10px 5px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #1565c0;
+}
+
+.close-button {
+    background-color: #757575;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 5px;
+    transition: background-color 0.3s;
+}
+
+.close-button:hover {
+    background-color: #616161;
+}
+
+.popup-actions {
+    margin: 20px 0;
+}
+
+.popup-footer {
+    margin-top: 15px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .popup-content {
+        margin: 20px;
+        padding: 20px;
+    }
+    .popup-actions {
+        display: flex;
+        flex-direction: column;
+    }
+    .cta-button, .close-button {
+        margin: 5px 0;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Contenu normal de votre page d'accueil -->
+    <h1>Bienvenue sur l'Application X</h1>
+    <p>Contenu normal de votre application...</p>
+
+    <!-- Le Popup -->
+    <div id="closurePopup" class="popup-overlay">
+        <div class="popup-content">
+            <h2>Information Importante</h2>
+            <p>L'application <strong>X fermera définitivement le 31 Décembre 2025</strong>.</p>
+            <p>Cette fermeture s'inscrit dans notre migration vers de nouvelles solutions.</p>
+
+            <div class="popup-actions">
+                <a href="https://sites.google.com/votredomaine/fermeture-app-x" 
+                   class="cta-button" 
+                   target="_blank">
+                   Voir le calendrier détaillé
+                </a>
+                <button onclick="closePopup()" class="close-button">
+                    Fermer pour aujourd'hui
+                </button>
+            </div>
+
+            <p class="popup-footer">
+                <small>Cet avertissement réapparaîtra jusqu'à la fermeture.</small>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Script du popup
+        function closePopup() {
+            const popup = document.getElementById('closurePopup');
+            popup.style.display = 'none';
+
+            // Mémoriser la fermeture pour 24h
+            localStorage.setItem('popupClosed', 'true');
+            localStorage.setItem('popupClosedTime', new Date().getTime());
+        }
+
+        function shouldShowPopup() {
+            const popupClosed = localStorage.getItem('popupClosed');
+            const popupClosedTime = localStorage.getItem('popupClosedTime');
+
+            if (!popupClosed) return true;
+
+            // Réafficher après 24h
+            const now = new Date().getTime();
+            const twentyFourHours = 24 * 60 * 60 * 1000; // 24h en millisecondes
+            return (now - popupClosedTime) > twentyFourHours;
+        }
+
+        // Afficher le popup au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            if (shouldShowPopup()) {
+                document.getElementById('closurePopup').style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+</html>
