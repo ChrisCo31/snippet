@@ -1,0 +1,8 @@
+
+# Fichiers Excel VBA (local only)
+vba/*.xlsx
+vba/*.xlsm
+vba/*.xls
+vba/**/*.xlsx
+vba/**/*.xlsm
+vba/**/*.xls
